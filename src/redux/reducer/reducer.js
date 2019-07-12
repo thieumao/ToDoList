@@ -5,9 +5,9 @@ import filterStatusReducer from './filterStatusReducer';
 import isAddingReducer from './isAddingReducer';
 
 const reducer = combineReducers({
-    arrWorks: arrWorksReducer,
-    filterStatus: filterStatusReducer,
-    isAdding: isAddingReducer
+  arrWorks: arrWorksReducer,
+  filterStatus: filterStatusReducer,
+  isAdding: isAddingReducer,
 });
 
 export default reducer;
