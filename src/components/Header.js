@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
   View, Text, TouchableOpacity, StyleSheet,
 } from 'react-native';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { toggleAdd } from '../redux/actionCreators';
 
 const styles = StyleSheet.create({
@@ -30,18 +31,22 @@ const styles = StyleSheet.create({
   },
 });
 
-class Header extends Component {
-  render() {
-    return (
-      <View style={styles.header}>
-        <Text />
-        <Text style={styles.title}>MY WORKS</Text>
-        <TouchableOpacity onPress={() => this.props.toggleAdd()}>
-          <Text style={styles.button}>Add</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
-}
+const Header = ({ onToggleAdd }) => (
+  <View style={styles.header}>
+    <Text />
+    <Text style={styles.title}>MY WORKS</Text>
+    <TouchableOpacity onPress={() => onToggleAdd()}>
+      <Text style={styles.button}>Add</Text>
+    </TouchableOpacity>
+  </View>
+);
 
-export default connect(null, { toggleAdd })(Header);
+Header.propTypes = {
+  onToggleAdd: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = dispatch => ({
+  onToggleAdd: () => dispatch((toggleAdd())),
+});
+
+export default connect(null, mapDispatchToProps)(Header);
