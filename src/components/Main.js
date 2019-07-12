@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, FlatList, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Work from './Work';
 import Filter from './Filter';
@@ -41,6 +42,23 @@ class Main extends Component {
   }
 }
 
+Main.propTypes = {
+  myFilter: PropTypes.string.isRequired,
+  myWorks: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      title: PropTypes.string,
+      detail: PropTypes.string,
+      isDone: PropTypes.bool,
+      isShow: PropTypes.bool,
+    }),
+  ).isRequired,
+  myIsAdding: PropTypes.bool.isRequired,
+};
+
+// Main.defaultProps = {
+//   myWorks: [],
+// }
 
 function mapStateToProps(state) {
   return {
