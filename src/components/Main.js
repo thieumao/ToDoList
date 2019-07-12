@@ -56,10 +56,6 @@ Main.propTypes = {
   myIsAdding: PropTypes.bool.isRequired,
 };
 
-// Main.defaultProps = {
-//   myWorks: [],
-// }
-
 function mapStateToProps(state) {
   return {
     myFilter: state.filterStatus,

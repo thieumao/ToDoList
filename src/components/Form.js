@@ -12,9 +12,16 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  textInput: {
+  titleTextInput: {
     width: 250,
     height: 40,
+    backgroundColor: '#F5F5F5',
+    margin: 10,
+    paddingHorizontal: 10,
+  },
+  detailTextInput: {
+    width: 250,
+    height: 100,
     backgroundColor: '#F5F5F5',
     margin: 10,
     paddingHorizontal: 10,
@@ -49,16 +56,17 @@ class Form extends Component {
     return (
       <View style={styles.container}>
         <TextInput
-          style={styles.textInput}
+          style={styles.titleTextInput}
           value={this.state.title}
           onChangeText={text => this.setState({ title: text })}
           placeholder="Title"
         />
         <TextInput
-          style={styles.textInput}
+          style={styles.detailTextInput}
           value={this.state.detail}
           onChangeText={text => this.setState({ detail: text })}
           placeholder="Detail"
+          multiline
         />
         <TouchableOpacity onPress={this.onAdd}>
           <Text style={styles.button}>Add</Text>
