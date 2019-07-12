@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   View, TouchableOpacity, Text, StyleSheet,
 } from 'react-native';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { showToDo, showDone, showAll } from '../redux/actionCreators';
 
@@ -31,10 +32,6 @@ class Filter extends Component {
     return styles.buttonText;
   }
 
-  setFilterStatus(actionType) {
-    this.props.dispatch({ type: actionType });
-  }
-
   render() {
     return (
       <View style={styles.container}>
@@ -51,6 +48,13 @@ class Filter extends Component {
     );
   }
 }
+
+Filter.propTypes = {
+  myFilterStatus: PropTypes.string.isRequired,
+  showToDo: PropTypes.func.isRequired,
+  showDone: PropTypes.func.isRequired,
+  showAll: PropTypes.func.isRequired,
+};
 
 function mapStateToProps(state) {
   return { myFilterStatus: state.filterStatus };
