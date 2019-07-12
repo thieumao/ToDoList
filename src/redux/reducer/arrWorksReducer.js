@@ -29,7 +29,7 @@ const arrWorksReducer = (state = defaultArrWorks, action) => {
         });
     }
     if (action.type === 'ADD_WORK') {
-        const list = state.sort((a, b) => (a.id > b.id) ? 1 : -1)
+        const list = state.sort((a, b) => (a.id < b.id) ? 1 : -1)
         return [{
             id: list[0].id + 1,
             title: action.title,
