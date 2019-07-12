@@ -28,6 +28,7 @@ class Work extends Component {
                 <View style={styles.item}>
                     <Text style={{ fontWeight: 'bold', textDecorationLine }}>{title}</Text>
                     <Text>{detailText}</Text>
+                    <Text>{id}</Text>
                     <View style={styles.controller}>
                         <TouchableOpacity
                             style={styles.button}

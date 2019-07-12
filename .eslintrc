@@ -1,0 +1,125 @@
+{
+  /**
+   * Avoiding a dependency on @agct package while we have developers who don't have
+   * easy access to artifactory. These rules should be equivalent
+   */
+  "extends": "eslint-config-airbnb",
+  "env": {
+    "jest": true
+  },
+  "parser": "babel-eslint",
+  /*
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "ecmaFeatures": {
+      "jsx": true,
+      "experimentalObjectRestSpread": true
+    }
+  },
+  */
+  "globals": {
+    "fetch": true,
+    "__DEV__": true,
+    "jest": true,
+    "window": true
+  },
+  "rules": {
+    // 0 - off, 1 - warn, 2 - error
+
+    // from @agct/eslint-config-agct/lib/react
+
+    /**
+     * This rule raises many false errors because of the assumptions it makes
+     * which webpack breaks
+     */
+    "import/no-unresolved": [0],
+
+    /**
+     * This rule is buggy, and breaks on object destructuring to don't use it
+     * for shapes
+     */
+    "react/no-unused-prop-types": [2, { "skipShapeProps": true }],
+
+    // from @agct/eslint-config-agct/lib/common
+
+    /**
+     * Long functions and those with a high cyclomatic complexity should
+     * probably be refactored into smaller, more focussed functions.
+     */
+    "complexity": [1, 8],
+    "max-statements": [1, 12],
+
+    /**
+     * Long lines of code indicate that there might be too much functionality
+     * on the line, so should probably be split into several shorted, more
+     * focussed lines of code.
+     */
+    // added ignoreUrls option from app-adviser
+    "max-len": [1, 120, 2, {"ignoreUrls": true}],
+
+    /**
+     * Deeply nested blocks of code tend to be difficult to read and indicate
+     * that there may be several different concerns intermingled.  Usually
+     * such code should be refactored to that it is flat and linear, and
+     * repeated blocks extracted into functions.
+     */
+    "max-depth": [1, 4],
+    "max-nested-callbacks": [1, 4],
+
+    /**
+     * The convention in javascript is to have few parameters and use an
+     * object when many parameters are needed.
+     */
+    "max-params": [1, 4],
+
+    /**
+     * Comments starting with, e.g. FIXME usually indicate something that needs
+     * attention, so raise a warning
+     */
+    "no-warning-comments": [1],
+
+    /**
+     * Airbnb's default of everything in dependencies simply makes no sense,
+     * especially for react and tests.  Trying to relax specific cases only
+     * is complicated and fragile, so rather just relax the entire rule.
+
+     * This simply doesn't work with react-natives custom resolver, disabling
+     */
+    "import/no-extraneous-dependencies": [0],
+    "import/extensions": [0],
+
+    /**
+     * Already used extensively before implementing. I disagree with the rationale
+     * here, there's no practical value in doing this.
+     */
+    "react/jsx-filename-extension": [0],
+
+    /**
+     * Not much point to this rule when semicolons are required
+     */
+    "no-plusplus": [0],
+
+    /**
+     * This is broken
+     */
+    "react/sort-comp": [0],
+
+
+    // from app
+    "linebreak-style": [0],
+    "arrow-parens": [2, "as-needed"],
+    "react/forbid-prop-types": [1],
+    "react/no-typos": [0],
+    "react/no-unescaped-entities": [0],
+    "import/prefer-default-export": [1],
+    "no-mixed-operators": [0],
+    "global-require": [0],
+    "no-underscore-dangle": [0],
+    "jsx-a11y/no-static-element-interactions": [0],
+    "jsx-a11y/anchor-is-valid": [0],
+    "camelcase": [0],
+    "no-confusing-arrow": [0],
+    "jsx-a11y/accessible-emoji": [0],
+    "react/destructuring-assignment": [0],
+  }
+}
