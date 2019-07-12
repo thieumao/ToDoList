@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   View, TextInput, TouchableOpacity, StyleSheet, Text,
 } from 'react-native';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addWord, toggleAdd } from '../redux/actionCreators';
 
@@ -66,5 +67,10 @@ class Form extends Component {
     );
   }
 }
+
+Form.propTypes = {
+  addWord: PropTypes.func.isRequired,
+  toggleAdd: PropTypes.func.isRequired,
+};
 
 export default connect(null, { addWord, toggleAdd })(Form);
