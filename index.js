@@ -9,10 +9,10 @@ YellowBox.ignoreWarnings([
   'RCTBridge',
 ]);
 
-export default class ToDo extends React.Component {
-  render() {
-    return <App />;
-  }
-}
+const ToDo = () => (
+  <App />
+);
+
+export default ToDo;
 
 AppRegistry.registerComponent(appName, () => ToDo);
